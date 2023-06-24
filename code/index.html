@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="RadarChart">
+
+<head>
+  <meta charset="utf-8">
+  <title>D3 Radar Chart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="container" ng-controller="MainCtrl as radar">
+
+  <!-- header -->
+  <header class="page-header">
+    <h1>Der Wandel der Schweizer Politik</h1> 
+    <p1>Die Entwicklung der kantonalen Parlamentswahlen zwischen 1972 und 2021 sollen auf dieser Webseite aufgezeigt werden. Um mehr über die Parteien in der Schweiz zu erfahren, wird auf die <a href="https://www.bk.admin.ch/ch/d/pore/pa/par_2_2_2_3.html">admin.ch</a> Webseite verwiesen. 
+      </p1> <br><br>
+      <p1>Auf der unten abgebildeten Schweizer Karte wird jeder Kanton mit der Farbe der kantonal stärksten Partei im ausgewählten Jahr angezeigt. Fährt man  über einen Kanton, werden weitere Informationen zu den Wahlergebnissen angezeigt und die Farbe des Kantons ändert sich. Umso kleiner die Differenz zwischen der stärksten und der zweitstärksten Partei ist, desto heller wird die eingeblendete Farbe. Beim Anklicken eines Kantones wird eine komplette Übersicht über die Wahlergebnisse der kantonalen Parlamentswahlen zwischen 1972 und 2021 angezeigt und weiter unten werden Kantone welche in den 1970er ähnlich waren, miteinander verglichen.</p1>
+    
+  </header>
+
+
+    <!-- Swiss map -->
+    <div class="main container">
+
+    </div>
+    <br>
+    <svg id="map" width="700" height="500"></svg>
+    <svg id="legende" width="100" height="450"></svg>
+    <hr >
+
+    <!-- Stacked areachart and Radar Chart-->
+    <div class="row">
+        <h2>Wahlergebniss kantonale Parlamentswahlen 1972 - 2021</h2>
+         <p>Es ist möglich, das Wahlergebnis einer Partei anzuwählen - dann wird dieses zu unterst angezeigt und die Wahlergebnisse der Partei sind klarer ersichtlich. Fährt man bei der Legende über einen der Kreise - wird nur die ausgewählte Partei angezeigt. </p>
+
+    <div id="plots" class="column left2">
+    <div id="plot"></div>
+    </div>
+    </div>
+     <br>
+        <br>
+
+    <hr />
+
+  <!-- negative-/positive-barplot and radar chart -->
+  <div class="row">
+    <h2>Vergleich zwischen den Kantonen</h2>
+      <p>Die Kantone, welche Anfang der 70-er Jahre politisch ähnlich waren, werden miteinander verglichen. Zum Einen werden die Wahlergebnisse im Vergleich zum Vorwahljahr visualisiert. So sind im Balkendiagramm die Ab- und Zunahmen bei den stärksten Parteien ersichtlich. Auch ist im Netzdiagramm eine Übersicht über die Wahlergebnisse gegeben, in der alle Parteien ersichtlich sind. Über die Zeitachse können das Balken- und Netzdiagramm gesteuert werden. Im gestapelten Flächendiagramm sind die Wahlergebnisse für die Kantone von 1972 - 2021 ersichtlich.  </p> 
+      <p>Um eine neue Gruppe von Kantonen zu betrachten, kann auf der Schweizer Karte ein neuer Kanton ausgewählt werden.</p>
+      
+    <div id="bars" class="column left">
+        <br/>
+        <br/>
+        <br/>
+        
+        <div id="bar"></div>
+    </div>
+   
+   
+    <!-- visualization -->
+    <div class="column right">
+  
+      
+      <div class="visualization">
+        <radar csv="radar.csv" config="radar.config"></radar>
+      </div>
+        <p style="display:none">Wahlperiode
+        <select id="selectPeriode" ng-options="example for example in radar.examples" ng-model="radar.exampleSelected" ng-change="radar.selectExample(radar.exampleSelected)"></select>
+      
+        Kanton
+        <select id="selectKanton" ng-options="example for example in radar.examples2" ng-model="radar.exampleSelected2" ng-change="radar.selectExample2(radar.exampleSelected)"></select>
+      </p>
+    </div>
+      
+  </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  <hr />
+    
+<!-- multiple areacharts -->    
+       <div id="multiplePlots" class="visualization">
+        <div id="multiple-plots"></div>
+        </div>
+    
+    <hr />
+
+
+    
+  
+  <!-- footer -->
+  <footer>
+    Visualisierungen und Webseite von Ramon Koller und Masha Jasmine Grütter ©2021
+  </footer>
+
+
+  <!-- scripts -->
+  <script src="http://code.angularjs.org/1.3.5/angular.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="https://unpkg.com/d3-simple-slider"></script>
+  <script src="app.js"></script>
+  <script src="radar.js"></script>
+  <script src="radarDraw.js"></script>
+  <script src="map.js"></script>
+  <script src="areachart.js"></script>
+ <script src="Multipleareachart.js"></script>
+  <script src="barplot.js"></script>
+  <script>
+    // Hack to make this example display correctly in an iframe on bl.ocks.org
+    d3.select(self.frameElement).style("height", "1000px");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding-top: 10px;
+  padding-bottom: 100px;
+
+}
+html {
+  overflow-y: scroll;
+}
+h1 {
+  color: black;
+  font-weight: 800;
+  font-size: 1.7em;
+}
+h2 {
+  color: black;
+  font-size: 1.3em;
+  padding-bottom: 10px;
+}
+h3 {
+  color: black;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+footer a,
+footer a:hover, footer a:visited {
+  background: #867E74;
+}
+.text-small {
+  font-size: 12px;
+  font-style: italic;
+}
+footer {
+  color: black;
+  padding-top: 5px;
+  border-top: 1px solid gray;
+  font-size: 12px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background: #867E74;
+  text-align: center;
+}
+pre {
+  height: 200px;
+  font-size: 9px;
+  overflow-y: scroll;
+}
+.form-control-inline {
+  display: inline;
+  width: 40px;
+  margin-right: 5px;
+}
+.visualization {
+}
+.configuration {
+  font-size: 0.8em;
+  width: 130px;
+  border: 1px solid #ddd;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.checkbox {
+  margin-left: 20px;
+}
+
+
+/* Create two equal columns that floats next to each other */
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  height: 300px;
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+.left2 {
+  width: 50%;
+}
+
+.right2 {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1100px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
